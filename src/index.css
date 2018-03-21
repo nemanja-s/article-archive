@@ -1,5 +1,111 @@
-body {
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  80% {
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+  80% {
+    transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+@keyframes moveInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  box-sizing: inherit;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #777;
+  padding: 2rem 2rem 0 2rem;
+  box-sizing: border-box;
+}
+
+/* Some corrections for all media queries */
+@media screen and (max-width: 600px),
+(max-width: 900px) and (min-width: 601px),
+(max-width: 1200px) and (min-width: 901px){
+  .heading-primary--sub {
+    letter-spacing: .8rem;
+  }
+}
+
+/* Media query for Phone */
+@media screen and (max-width: 600px){
+  body{
+    padding: 0;
+  }
+  html{
+    font-size: 38%;
+  }
+}
+/* Media query for Tablet portrait */
+@media screen and (max-width: 900px) and (min-width: 601px){
+  body{
+    padding: 0;
+  }
+  html{
+    font-size: 55%;
+  }
+}
+/* Media query for Tablet landscape */
+@media screen and (max-width: 1200px) and (min-width: 901px){
+  body{
+    padding: 1rem;
+  }
+  html{
+    font-size: 60%;
+  }
+}
+/* Media query for Big desktop */
+@media screen and (min-width: 1800px){
+  body{
+    padding: 3rem;
+  }
+  html{
+    font-size: 85%;
+  }
 }

@@ -1,0 +1,80 @@
+.header {
+    height: 95vh;
+    clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+    position: relative;
+    overflow: hidden;
+}
+.bg-video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+.bg-video__content{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.bg-video__overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: .35;
+    background-size: cover;
+    background-position: center;
+}
+.header__logo-box{
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+}
+.logo{
+    height: 5rem;
+}
+/* Header text */
+.header__text-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.heading-primary {
+    color: #ffffff;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    margin-bottom: 5rem;
+}
+.heading-primary--main {
+    display: block;
+    font-size: 7rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    line-height: 1.2;
+    animation: moveInLeft 1s ease-out;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+}
+.heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: .95rem;
+    animation: moveInRight 1s ease-out;
+}
+/* Scroll gif in header*/
+.header__scroll-box{
+    position: absolute;
+    left: 50%;
+    bottom: 2.5%;
+    transform: translate(-50%, -50%);
+}
+.scroll-icon{
+    height: 6.5rem;
+    display: none;
+}

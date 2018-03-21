@@ -1,0 +1,75 @@
+.header__submit {
+    text-align: center;
+    backface-visibility: hidden;
+}
+#msgAlert {
+    color: #ffffff;
+    font-size: 2rem;
+    animation: moveInTop .5s ease-out .75s;
+    animation-fill-mode: backwards;
+}
+#month,
+#year {
+    width: 16rem;
+    background-color: #ffffff;
+    color: #777777;
+    padding: 1.5rem 3rem;
+    display: inline-block;
+    transition: all .2s;
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards;
+    margin-left: .5rem;
+    font-size: 1.7rem;
+    text-align: center;
+}
+/* Class for preventing rage clicking */
+.not-active {
+    pointer-events: none;
+    cursor: default;
+}
+/* Submit button in header section */
+.btn {
+    background-color: #ffffff;
+    color: #777777;
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards;
+}
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.2rem 3rem;
+    display: inline-block;
+    border-radius: 10rem;
+    transition: all .2s;
+    position: relative;
+    margin-left: 2rem;
+    font-size: 1.6rem;
+}
+.btn:hover,
+#month:hover,
+#year:hover {
+    transform: translateY(-.3rem);
+    box-shadow: 0 1rem 2rem rgba(255, 255, 255, .3);
+}
+.btn:active {
+    transform: translateY(-.1rem);
+    box-shadow: 0 .5rem 1rem rgba(255, 255, 255, .3);
+}
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+    background-color: #ffffff;
+}
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
