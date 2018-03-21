@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classes from './Selector.css';
 
 class Selector extends Component {
   // Checking validity of input values
@@ -23,7 +24,7 @@ class Selector extends Component {
 
   render() {
     return(
-      <div className="header__submit">
+      <div className={classes.Selector}>
         <p id="msgAlert">Please select year and month</p>
         <input
           type="number"
@@ -51,7 +52,9 @@ class Selector extends Component {
           <option value="11">November</option>
           <option value="12">December</option>
         </select>
-        <a href="#" id="searchBtn" className="btn" onClick={this.findArticles}>Find articles</a>
+        <a href="#"
+           id="searchBtn"
+           onClick={this.findArticles}>Find articles</a>
       </div>
     )
   }

@@ -1,22 +1,22 @@
-.header {
+.Header {
     height: 95vh;
     clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
     position: relative;
     overflow: hidden;
 }
-.bg-video{
+.BgVideo {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
 }
-.bg-video__content{
+.BgVideo video {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.bg-video__overlay{
+.BgVideoOverlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -27,29 +27,29 @@
     background-size: cover;
     background-position: center;
 }
-.header__logo-box{
+.LogoBox {
     position: absolute;
     top: 3rem;
     left: 3rem;
 }
-.logo{
+.LogoBox img {
     height: 5rem;
 }
-/* Header text */
-.header__text-box {
+
+.TextBox {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
 }
-.heading-primary {
+.TextBox h1 {
     color: #ffffff;
     text-transform: uppercase;
     backface-visibility: hidden;
     margin-bottom: 5rem;
 }
-.heading-primary--main {
+.HeadingMain {
     display: block;
     font-size: 7rem;
     font-weight: 400;
@@ -60,7 +60,7 @@
     margin-bottom: 2rem;
     padding-left: 2rem;
 }
-.heading-primary--sub {
+.HeadingSub {
     display: block;
     font-size: 2rem;
     font-weight: 700;
@@ -68,13 +68,40 @@
     animation: moveInRight 1s ease-out;
 }
 /* Scroll gif in header*/
-.header__scroll-box{
+.Header a {
     position: absolute;
     left: 50%;
     bottom: 2.5%;
     transform: translate(-50%, -50%);
 }
-.scroll-icon{
+.Header a img {
     height: 6.5rem;
     display: none;
+}
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+    80% {
+        transform: translateX(1rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+    80% {
+        transform: translateX(-1rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
 }

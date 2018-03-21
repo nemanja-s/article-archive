@@ -1,13 +1,13 @@
-.results{
+.Results {
     background-color: #f7f7f7;
     padding: 12rem 0;
     margin: -13vh 0 -10vh 0;
 }
-.heading-secondary{
+.Heading {
     text-align: center !important;
     margin: 4rem 0 !important;
 }
-.heading-secondary--text {
+.HeadingText {
     font-size: 3rem;
     text-transform: uppercase;
     font-weight: 700;
@@ -20,7 +20,11 @@
     letter-spacing: .2rem;
     transition: all .2s;
 }
-.heading-secondary--page{
+.HeadingText:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: .5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
+}
+.HeadingPage {
     font-size: 2rem;
     font-weight: 400;
     display: block;
@@ -28,25 +32,21 @@
     letter-spacing: .1rem;
     margin: 2rem 0 -4rem 0;
 }
-.heading-secondary--text:hover {
-    transform: skewY(2deg) skewX(15deg) scale(1.1);
-    text-shadow: .5rem 1rem 2rem rgba(0, 0, 0, 0.2); }
-}
-.all-articles{
+.Articles {
     max-width: 192rem;
     margin: 0 auto;
     text-align: center;
 }
-.all-articles::after {
+.Articles::after {
     content: "";
     display: block;
     clear: both;
 }
-.all-articles__button{
+.ArticlesButton {
     text-align: center;
 }
-.btn-text:link,
-.btn-text:visited{
+.BtnText:link,
+.BtnText:visited{
     font-size: 16px;
     color: #2c3e50;
     display: inline-block;
@@ -56,18 +56,18 @@
     transition: all .2s;
     margin-top: 5px;
 }
-.btn-text:hover{
+.BtnText:hover{
     background-color: #2c3e50;
     color: #fff;
     box-shadow: 0 10px 20px rgba(#000, .15);
     transform: translateY(-2px);
 }
-.btn-text:active{
+.BtnText:active{
     box-shadow: 0 5px 10px rgba(#000, .15);
     transform: translateY(0);
 }
 /* footer with copyright data */
-.footer{
+.Footer {
     height: 15vh;
     clip-path: polygon(0 65%, 100% 0, 100% 100%, 0 100%);
     background: #bdc3c7;
@@ -75,7 +75,7 @@
     background: linear-gradient(to left, #2c3e50, #bdc3c7);
     position: relative;
 }
-.footer_text-box{
+.FooterText {
     width: 100%;
     position: absolute;
     top: 75%;

@@ -1,31 +1,36 @@
 import React from 'react';
+import classes from './Header.css';
+import bgVideo1 from '../../assets/videos/NYC-Traffic.mp4';
+import bgVideo2 from '../../assets/videos/NYC-Traffic.webm';
+import logo from '../../assets/images/logo.png';
+import scroll from '../../assets/images/scroll.gif';
 
 const header = props => (
-  <header id="header" className="header">
-    <div className="bg-video">
-      <video className="bg-video__content" autoPlay muted loop>
-        <source src="../img/NYC-Traffic.mp4" type="video/mp4" />
-        <source src="../img/NYC-Traffic.webm" type="video/webm" />
+  <header id="header" className={classes.Header}>
+    <div className={classes.BgVideo}>
+      <video autoPlay muted loop>
+        <source src={bgVideo1} type="video/mp4" />
+        <source src={bgVideo2} type="video/webm" />
         Your browser does not supported video background!
       </video>
     </div>
-    <div className="bg-video__overlay" />
-    <div className="header__logo-box">
-      <img src="../img/logo.png" alt="logo" className="logo" />
+    <div className={classes.BgVideoOverlay} />
+    <div className={classes.LogoBox}>
+      <img src={logo} alt="logo" />
     </div>
-    <div className="header__text-box">
-      <h1 className="heading-primary">
-        <span className="heading-primary--main">
+    <div className={classes.TextBox}>
+      <h1>
+        <span className={classes.HeadingMain}>
           Article Archive
         </span>
-        <span className="heading-primary--sub">
+        <span className={classes.HeadingSub}>
           Explore more than 13 million NYT articles, since 1851 year!
         </span>
       </h1>
       {props.children}
     </div>
-    <a href="#all-articles" className="header__scroll-box">
-      <img src="../img/scroll.gif" alt="logo" id="scroll" className="scroll-icon" />
+    <a href="#all-articles">
+      <img src={scroll} alt="logo" id="scroll" />
     </a>
   </header>
 );

@@ -1,15 +1,15 @@
-.header__submit {
+.Selector {
     text-align: center;
     backface-visibility: hidden;
 }
-#msgAlert {
+.Selector p {
     color: #ffffff;
     font-size: 2rem;
     animation: moveInTop .5s ease-out .75s;
     animation-fill-mode: backwards;
 }
-#month,
-#year {
+.Selector select,
+.Selector input {
     width: 16rem;
     background-color: #ffffff;
     color: #777777;
@@ -28,14 +28,14 @@
     cursor: default;
 }
 /* Submit button in header section */
-.btn {
+.Selector a {
     background-color: #ffffff;
     color: #777777;
     animation: moveInBottom .5s ease-out .75s;
     animation-fill-mode: backwards;
 }
-.btn:link,
-.btn:visited {
+.Selector a:link,
+.Selector a:visited {
     text-transform: uppercase;
     text-decoration: none;
     padding: 1.2rem 3rem;
@@ -46,17 +46,12 @@
     margin-left: 2rem;
     font-size: 1.6rem;
 }
-.btn:hover,
-#month:hover,
-#year:hover {
-    transform: translateY(-.3rem);
-    box-shadow: 0 1rem 2rem rgba(255, 255, 255, .3);
-}
-.btn:active {
+
+.Selector a:active {
     transform: translateY(-.1rem);
     box-shadow: 0 .5rem 1rem rgba(255, 255, 255, .3);
 }
-.btn::after {
+.Selector a::after {
     content: "";
     display: inline-block;
     height: 100%;
@@ -69,7 +64,28 @@
     transition: all .4s;
     background-color: #ffffff;
 }
-.btn:hover::after {
+.Selector a:hover::after {
     transform: scaleX(1.4) scaleY(1.6);
     opacity: 0;
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+@keyframes moveInTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-3rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
 }

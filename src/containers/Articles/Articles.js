@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LoadArticles from '../../components/LoadArticles/LoadArticles';
+import classes from './Articles.css';
 
 class Articles extends Component {
   state = {
@@ -60,22 +61,30 @@ class Articles extends Component {
     }
 
     return(
-      <div className="main-container">
-        <div className="results">
-          <div className="heading-secondary">
-            <h2 id="all-articles" className="heading-secondary--text">Your searched articles:</h2>
-            <h2 className="heading-secondary--page">Page {this.state.pageCounter}</h2>
+      <div>
+        <div className={classes.Results}>
+          <div className={classes.Heading}>
+            <h2 id="all-articles" className={classes.HeadingText}>
+              Your searched articles:
+            </h2>
+            <h2 className={classes.HeadingPage}>
+              Page {this.state.pageCounter}
+            </h2>
           </div>
-          <div className="all-articles">
+          <div className={classes.Articles}>
             {loadArticles}
           </div>
-          <div className="all-articles__button">
+          <div className={classes.ArticlesButton}>
             {prevButton}
-            <p><a href="#" className="btn-text" onClick={this.nextPage}>Next page &rarr;</a></p>
+            <p><a href="#" className={classes.BtnText} onClick={this.nextPage}>
+              Next page &rarr;
+            </a></p>
           </div>
         </div>
-        <div className="footer">
-          <div className="footer_text-box">{copyright}<br/>Page built by Nemanja Stojanovic</div>
+        <div className={classes.Footer}>
+          <div className={classes.FooterText}>
+            {copyright}<br/>Page built by Nemanja Stojanovic
+          </div>
         </div>
       </div>
     )
