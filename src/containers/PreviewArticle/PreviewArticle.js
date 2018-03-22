@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classes from './PreviewArticle.css';
 
 class PreviewArticle extends Component {
   state = {};
@@ -37,22 +38,28 @@ class PreviewArticle extends Component {
   render(){
     return(
       this.state.data ?
-        <div className="article">
-          <img className="article--image" src={this.state.data.image} />
-          <div className="article--image--details">
-            <p className="details__headline">
-              {this.props.doc.headline.print_headline ? this.props.doc.headline.print_headline : this.props.doc.headline.main}
+        <div className={classes.ArticleBox}>
+          <img src={this.state.data.image} />
+          <div className={classes.ArticleDetails}>
+            <p className={classes.Headline}>
+              {this.props.doc.headline.print_headline ?
+                this.props.doc.headline.print_headline
+                : this.props.doc.headline.main}
             </p>
-            <p className="details__author">
-              {this.props.doc.byline !== null ? this.props.doc.byline.original : null}
+            <p className={classes.Author}>
+              {this.props.doc.byline !== null ?
+                this.props.doc.byline.original
+                : null}
             </p>
             <p>Published: {this.props.doc.pub_date}</p>
             <p>Type of article: {this.props.doc.type_of_material}</p>
             <p>Total words: {this.props.doc.word_count}</p>
-            <a className="btn-text" href={this.props.doc.web_url} target="_blank">Read Article</a>
+            <a className={classes.BtnText}
+               href={this.props.doc.web_url}
+               target="_blank">Read Article</a>
           </div>
-          <h2 className="article--title">{this.state.data.title}</h2>
-          <p className="article--description">{this.state.data.description}</p>
+          <h2 className={classes.Title}>{this.state.data.title}</h2>
+          <p className={classes.Description}>{this.state.data.description}</p>
         </div>
         : null
     )

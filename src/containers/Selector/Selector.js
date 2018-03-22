@@ -54,7 +54,9 @@ class Selector extends Component {
         </select>
         <a href="#"
            id="searchBtn"
-           onClick={this.findArticles}>Find articles</a>
+           className={classes.Btn}
+           onClick={this.findArticles}>Find articles
+        </a>
       </div>
     )
   }

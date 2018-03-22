@@ -28,30 +28,36 @@
     cursor: default;
 }
 /* Submit button in header section */
-.Selector a {
+.Btn {
     background-color: #ffffff;
     color: #777777;
     animation: moveInBottom .5s ease-out .75s;
     animation-fill-mode: backwards;
 }
-.Selector a:link,
-.Selector a:visited {
+.Btn:link,
+.Btn:visited {
     text-transform: uppercase;
     text-decoration: none;
     padding: 1.2rem 3rem;
     display: inline-block;
     border-radius: 10rem;
     transition: all .2s;
-    position: relative;
+    position: inherit;
     margin-left: 2rem;
     font-size: 1.6rem;
+    transform: translate(0);
 }
-
-.Selector a:active {
+.Btn:hover,
+.Selector select:hover,
+.Selector input:hover {
+    transform: translateY(-.3rem);
+    box-shadow: 0 1rem 2rem rgba(255, 255, 255, .3);
+}
+.Btn:active {
     transform: translateY(-.1rem);
     box-shadow: 0 .5rem 1rem rgba(255, 255, 255, .3);
 }
-.Selector a::after {
+.Btn::after {
     content: "";
     display: inline-block;
     height: 100%;
@@ -64,7 +70,7 @@
     transition: all .4s;
     background-color: #ffffff;
 }
-.Selector a:hover::after {
+.Btn:hover::after {
     transform: scaleX(1.4) scaleY(1.6);
     opacity: 0;
 }
