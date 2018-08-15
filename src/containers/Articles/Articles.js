@@ -57,7 +57,7 @@ class Articles extends Component {
     }
     let prevButton = null;
     if(this.state.pageCounter > 1) {
-      prevButton = <p><a href="#" className="btn-text" onClick={this.prevPage}>&larr; Prev page</a></p>;
+      prevButton = <p><a href="# " className="btn-text" onClick={this.prevPage}>&larr; Prev page</a></p>;
     }
 
     return(
@@ -76,7 +76,7 @@ class Articles extends Component {
           </div>
           <div className={classes.ArticlesButton}>
             {prevButton}
-            <p><a href="#" className={classes.BtnText} onClick={this.nextPage}>
+            <p><a href="# " className={classes.BtnText} onClick={this.nextPage}>
               Next page &rarr;
             </a></p>
           </div>

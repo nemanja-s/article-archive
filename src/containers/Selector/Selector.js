@@ -6,8 +6,8 @@ class Selector extends Component {
   findArticles = () => {
     const currentYear = (new Date()).getFullYear();
     const currentMonth = (new Date()).getMonth() + 1;
-    const choosenYear = parseInt(this.year.value);
-    const choosenMonth = parseInt(this.month.value);
+    const choosenYear = parseInt(this.year.value, 10);
+    const choosenMonth = parseInt(this.month.value, 10);
     if(this.year.value === "" || choosenYear < 1851 || choosenYear > currentYear){
       document.getElementById('msgAlert').innerHTML = "You must insert valid year...";
       return;
@@ -52,7 +52,7 @@ class Selector extends Component {
           <option value="11">November</option>
           <option value="12">December</option>
         </select>
-        <a href="#"
+        <a href="# "
            id="searchBtn"
            className={classes.Btn}
            onClick={this.findArticles}>Find articles
