@@ -2,31 +2,31 @@ import React, { Component } from 'react';
 import classes from './PreviewArticle.css';
 
 class PreviewArticle extends Component {
-  state = {};
+  state = {
+    data: null
+  };
 
   responseHandler = (json) => {
     this.setState({data: json});
     document.getElementById('msgAlert').innerHTML = "DONE! Scroll down or click on arrow";
     document.getElementById('searchBtn').classList.remove('not-active');
     document.getElementById('scroll').style.display = "block";
-    console.log('[SUCCESS]', json)
   };
 
   errorHandler = (error) => {
     document.getElementById('msgAlert').innerHTML =
       "Too many requests / rate limit exceeded. Try again later";
     document.getElementById('searchBtn').classList.add('not-active');
-    console.log('[ERROR]', error)
   };
 
   componentDidMount() {
     let previewUrl = this.props.doc.web_url;
     let apiUrl = new URL(
-      "https://nyt-link-preview.herokuapp.com/" + previewUrl);
+      "https://link-preview-api.herokuapp.com/" + previewUrl);
     const request = new Request(
       apiUrl,
       {
-        method: "GET",
+        method: "GET"
       }
     );
     fetch(request)
@@ -39,7 +39,7 @@ class PreviewArticle extends Component {
   render(){
     return(
       this.state.data ?
-        /*<div className={classes.ArticleBox}>
+        <div className={classes.ArticleBox}>
           <img src={this.state.data.image} alt='article' />
           <div className={classes.ArticleDetails}>
             <p className={classes.Headline}>
@@ -61,8 +61,7 @@ class PreviewArticle extends Component {
           </div>
           <h2 className={classes.Title}>{this.state.data.title}</h2>
           <p className={classes.Description}>{this.state.data.description}</p>
-        </div>*/
-        this.state.data.description
+        </div>
         : null
     )
   }
