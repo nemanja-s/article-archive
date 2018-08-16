@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import Aux from './components/Auxiliary/Auxiliary';
-import Header from './components/Header/Header';
+import Aux from './hoc/Auxiliary/Auxiliary';
+import Header from './hoc/Header/Header';
 import Selector from './containers/Selector/Selector';
 import Articles from './containers/Articles/Articles';
 
 class App extends Component {
-  state = {};
+  state = {
+    error: false
+  };
 
   dateHandler = (date) => {
     this.setState({
       year: date[0],
-      month: date[1]
+      month: date[1],
     })
   };
 
