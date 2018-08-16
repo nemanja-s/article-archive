@@ -23,7 +23,7 @@
     text-align: center;
 }
 /* Class for preventing rage clicking */
-.not-active {
+.Disabled {
     pointer-events: none;
     cursor: default;
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import classes from './PreviewArticle.css';
-import Spinner from '../../components/UI/Spinner/Spinner';
+import Spinner from '../../components/Spinner/Spinner';
 
 
 class PreviewArticle extends Component {

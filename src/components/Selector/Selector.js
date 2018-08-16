@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import classes from './Selector.css';
+import * as actionTypes from '../../store/actions/actionTypes';
+
 
 class Selector extends Component {
+  state = {
+    buttonClasses: classes.Btn
+  };
+
   // Checking validity of input values
   findArticles = () => {
     const currentYear = (new Date()).getFullYear();
@@ -9,23 +17,22 @@ class Selector extends Component {
     const choosenYear = parseInt(this.year.value, 10);
     const choosenMonth = parseInt(this.month.value, 10);
     if(this.year.value === "" || choosenYear < 1851 || choosenYear > currentYear){
-      document.getElementById('msgAlert').innerHTML = "You must insert valid year...";
+      this.props.onMessageChanged("You must insert valid year...");
       return;
     }
     if(choosenYear === currentYear && choosenMonth > currentMonth){
-      document.getElementById('msgAlert').innerHTML = "You must insert valid month...";
+      this.props.onMessageChanged("You must insert valid year...");
       return;
     }
-    document.getElementById('msgAlert').innerHTML = "Loading...";
-    document.getElementById('searchBtn').classList.add('not-active');
-    //Send date to parent App component
-    this.props.getDate([this.year.value, this.month.value]);
+    this.props.onMessageChanged("Loading...");
+    this.setState({ buttonClasses: [classes.Btn, classes.Disabled].join(' ') });
+    this.props.onDatePicked(this.year.value, this.month.value);
   };
 
   render() {
     return(
       <div className={classes.Selector}>
-        <p id="msgAlert">Please select year and month</p>
+        <p>{this.props.message}</p>
         <input
           type="number"
           id="year"
@@ -53,8 +60,7 @@ class Selector extends Component {
           <option value="12">December</option>
         </select>
         <a href="# "
-           id="searchBtn"
-           className={classes.Btn}
+           className={this.state.buttonClasses}
            onClick={this.findArticles}>Find articles
         </a>
       </div>
@@ -62,4 +68,18 @@ class Selector extends Component {
   }
 }
 
-export default Selector;
+const mapStateToProps = state => {
+  return {
+    message: state.message,
+    fetch: state.fetch
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onMessageChanged: (message) => dispatch({ type: actionTypes.CHANGE_MESSAGE, message: message }),
+    onDatePicked: (year, month) => dispatch({ type: actionTypes.SET_CHOOSEN_DATE, year: year, month: month })
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Selector);

@@ -1,11 +1,12 @@
 import React from 'react';
-import classes from './Header.css';
-import bgVideo1 from '../../assets/videos/NYC-Traffic.mp4';
-import bgVideo2 from '../../assets/videos/NYC-Traffic.webm';
-import logo from '../../assets/images/logo.png';
-import scroll from '../../assets/images/scroll.gif';
 
-const header = props => (
+import classes from './Video.css';
+import bgVideo1 from "../../assets/videos/NYC-Traffic.mp4";
+import bgVideo2 from "../../assets/videos/NYC-Traffic.webm";
+import logo from "../../assets/images/logo.png";
+import scroll from "../../assets/images/scroll.gif";
+
+const video = props => (
   <header id="header" className={classes.Header}>
     <div className={classes.BgVideo}>
       <video autoPlay muted loop>
@@ -35,4 +36,4 @@ const header = props => (
   </header>
 );
 
-export default header;
+export default video;
