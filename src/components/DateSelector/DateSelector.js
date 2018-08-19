@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import classes from './Selector.css';
-import * as actionTypes from '../../store/actions/actionTypes';
+import classes from './DateSelector.css';
+import * as actions from '../../store/actions/actionCreators';
 
 
-class Selector extends Component {
-  state = {
-    buttonClasses: classes.Btn
-  };
-
+class DateSelector extends Component {
   // Checking validity of input values
   findArticles = () => {
     const currentYear = (new Date()).getFullYear();
@@ -21,11 +17,10 @@ class Selector extends Component {
       return;
     }
     if(choosenYear === currentYear && choosenMonth > currentMonth){
-      this.props.onMessageChanged("You must insert valid year...");
+      this.props.onMessageChanged("You must insert valid month...");
       return;
     }
     this.props.onMessageChanged("Loading...");
-    this.setState({ buttonClasses: [classes.Btn, classes.Disabled].join(' ') });
     this.props.onDatePicked(this.year.value, this.month.value);
   };
 
@@ -59,8 +54,8 @@ class Selector extends Component {
           <option value="11">November</option>
           <option value="12">December</option>
         </select>
-        <a href="# "
-           className={this.state.buttonClasses}
+        <a href="javascript:void(0)"
+           className={classes.Btn}
            onClick={this.findArticles}>Find articles
         </a>
       </div>
@@ -70,16 +65,15 @@ class Selector extends Component {
 
 const mapStateToProps = state => {
   return {
-    message: state.message,
-    fetch: state.fetch
+    message: state.message
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onMessageChanged: (message) => dispatch({ type: actionTypes.CHANGE_MESSAGE, message: message }),
-    onDatePicked: (year, month) => dispatch({ type: actionTypes.SET_CHOOSEN_DATE, year: year, month: month })
+    onMessageChanged: (message) => dispatch(actions.changeMessage(message)),
+    onDatePicked: (year, month) => dispatch(actions.setChoosenDate(year, month))
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Selector);
+export default connect(mapStateToProps, mapDispatchToProps)(DateSelector);

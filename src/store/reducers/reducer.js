@@ -4,8 +4,7 @@ const initialState = {
   message: 'Please select year and month',
   year: '',
   month: '',
-  fetch: false,
-  error: null,
+  fetching: false,
   articles: null
 };
 
@@ -21,7 +20,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         year: action.year,
         month: action.month,
-        fetch: true
+        fetching: true
       };
     case actionTypes.FETCH_ARTICLES_START:
       return {
@@ -31,14 +30,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         articles: action.articles,
-        fetch: false
+        message: action.message
       };
     case actionTypes.FETCH_ARTICLES_FAIL:
       return {
         ...state,
-        error: action.error,
-        fetch: false,
-        message: "NYT server doesn't respond. Reload page and try again"
+        message: action.message
       };
     default:
       return state;

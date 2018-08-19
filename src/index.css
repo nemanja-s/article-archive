@@ -15,6 +15,17 @@ body {
   color: #777;
   padding: 2rem 2rem 0 2rem;
   box-sizing: border-box;
+  /* PREVENT SELECTING TEXT */
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 /* Some corrections for all media queries */
