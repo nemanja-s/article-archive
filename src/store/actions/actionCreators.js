@@ -42,7 +42,7 @@ export const fetchArticles = (year, month) => {
     const apiKey1 = '62260d8c037d49458489c69ad635725c';
     // const apiKey2 = '74f9b23fb5884f49a5694562ff4a358b';
     dispatch(fetchArticlesStart());
-    let url = "http://api.nytimes.com/svc/archive/v1/" + year
+    let url = "https://api.nytimes.com/svc/archive/v1/" + year
       + "/" + month + ".json?api-key=" + apiKey1;
     axios.get(url)
       .then(response => {
