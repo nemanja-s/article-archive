@@ -2,10 +2,9 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
   message: 'Please select year and month',
-  year: '',
-  month: '',
-  fetching: false,
-  articles: null
+  loading: false,
+  articles: null,
+  showArrow: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -15,16 +14,11 @@ const reducer = (state = initialState, action) => {
         ...state,
         message: action.message
       };
-    case actionTypes.SET_CHOOSEN_DATE:
-      return {
-        ...state,
-        year: action.year,
-        month: action.month,
-        fetching: true
-      };
     case actionTypes.FETCH_ARTICLES_START:
       return {
-        ...state
+        ...state,
+        loading: true,
+        showArrow: false
       };
     case actionTypes.FETCH_ARTICLES_SUCCESS:
       return {
@@ -36,6 +30,13 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         message: action.message
+      };
+    case actionTypes.SHOW_INFO_TO_USER:
+      return {
+        ...state,
+        message: action.message,
+        loading: false,
+        showArrow: true
       };
     default:
       return state;

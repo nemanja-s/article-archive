@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import LoadPage from '../../components/LoadPage/LoadPage';
 import classes from './Articles.css';
-import * as actions from '../../store/actions/actionCreators';
 
 class Articles extends Component {
   state = {
@@ -12,12 +11,8 @@ class Articles extends Component {
     pageCounter: 1
   };
 
-  componentDidMount() {
-    this.props.onFetchArticles(this.props.year, this.props.month);
-  }
-
-  // Change state data for using as props in LoadPage
-  // component and loading "pages"
+  // Change state data for previewing 20 new(or old) articles
+  // State send as a props to <LoadPage /> component
   nextPage = () => {
     this.setState(prevState => ({
       from: prevState.from + 20,
@@ -35,73 +30,54 @@ class Articles extends Component {
   };
 
   render(){
-    let loadArticles = null;
-    let copyright = null;
-    if(this.props.articles) {
-      loadArticles = <LoadPage
-        articles={this.props.articles}
-        from={this.state.from}
-        to={this.state.to}/>;
-      copyright = this.props.articles.copyright;
-    }
+    const { from, to, pageCounter } = this.state;
+    const { articles } = this.props;
     let prevButton = null;
-    if(this.state.pageCounter > 1) {
+    if(pageCounter > 1) {
       prevButton = <p>
-        <a href="javascript:void(0)"
+        <a href="#all-articles"
            className={classes.BtnText}
            onClick={this.prevPage}>&larr; Prev page
         </a></p>;
     }
 
-    let results = null;
-    if (this.props.articles)
-      results = (
-        <div>
-          <div className={classes.Results}>
-            <div className={classes.Heading}>
-              <h2 id="all-articles" className={classes.HeadingText}>
-                Your searched articles:
-              </h2>
-              <h2 className={classes.HeadingPage}>
-                Page {this.state.pageCounter}
-              </h2>
-            </div>
-            <div className={classes.Articles}>
-              {loadArticles}
-            </div>
-            <div className={classes.ArticlesButton}>
-              {prevButton}
-              <p><a href="javascript:void(0)"
-                    className={classes.BtnText}
-                    onClick={this.nextPage}>
-                Next page &rarr;
-              </a></p>
-            </div>
+    return articles ? (
+      <div>
+        <div className={classes.Results}>
+          <div className={classes.Heading}>
+            <h2 id="all-articles" className={classes.HeadingText}>
+              Your searched articles:
+            </h2>
+            <h2 className={classes.HeadingPage}>
+              Page {pageCounter}
+            </h2>
           </div>
-          <div className={classes.Footer}>
-            <div className={classes.FooterText}>
-              {copyright}<br/>Page built by Nemanja Stojanovic
-            </div>
+          <div className={classes.Articles}>
+            <LoadPage from={from} to={to}/>
+          </div>
+          <div className={classes.ArticlesButton}>
+            {prevButton}
+            <p><a href="#all-articles"
+                  className={classes.BtnText}
+                  onClick={this.nextPage}>
+              Next page &rarr;
+            </a></p>
           </div>
         </div>
-      );
-
-    return results;
+        <div className={classes.Footer}>
+          <div className={classes.FooterText}>
+            {articles.copyright}<br/>Page built by Nemanja Stojanovic
+          </div>
+        </div>
+      </div>
+    ) : null
   }
 }
 
 const mapStateToProps = state => {
   return {
-    year: state.year,
-    month: state.month,
     articles: state.articles
   }
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onFetchArticles: (year, month) => dispatch(actions.fetchArticles(year, month))
-  }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Articles);
+export default connect(mapStateToProps)(Articles);

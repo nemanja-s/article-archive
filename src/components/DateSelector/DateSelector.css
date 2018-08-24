@@ -1,97 +1,97 @@
 .Selector {
-    text-align: center;
-    backface-visibility: hidden;
+  text-align: center;
+  backface-visibility: hidden;
 }
 .Selector p {
-    color: #ffffff;
-    font-size: 2rem;
-    animation: moveInTop .5s ease-out .75s;
-    animation-fill-mode: backwards;
+  color: #ffffff;
+  font-size: 2rem;
+  animation: moveInTop 0.5s ease-out 0.75s;
+  animation-fill-mode: backwards;
 }
 .Selector select,
 .Selector input {
-    width: 16rem;
-    background-color: #ffffff;
-    color: #777777;
-    padding: 1.5rem 3rem;
-    display: inline-block;
-    transition: all .2s;
-    animation: moveInBottom .5s ease-out .75s;
-    animation-fill-mode: backwards;
-    margin-left: .5rem;
-    font-size: 1.7rem;
-    text-align: center;
+  width: 16rem;
+  background-color: #ffffff;
+  color: #777777;
+  padding: 1.1rem 2.5rem;
+  display: inline-block;
+  transition: all 0.2s;
+  animation: moveInBottom 0.5s ease-out 0.75s;
+  animation-fill-mode: backwards;
+  margin-left: 0.5rem;
+  font-size: 1.7rem;
+  text-align: center;
 }
 /* Class for preventing rage clicking */
 .Disabled {
-    pointer-events: none;
-    cursor: default;
+  pointer-events: none;
+  cursor: default;
 }
 /* Submit button in header section */
 .Btn {
-    background-color: #ffffff;
-    color: #777777;
-    animation: moveInBottom .5s ease-out .75s;
-    animation-fill-mode: backwards;
+  background-color: #ffffff;
+  color: #777777;
+  animation: moveInBottom 0.5s ease-out 0.75s;
+  animation-fill-mode: backwards;
 }
 .Btn:link,
 .Btn:visited {
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.2rem 3rem;
-    display: inline-block;
-    border-radius: 10rem;
-    transition: all .2s;
-    position: inherit;
-    margin-left: 2rem;
-    font-size: 1.6rem;
-    transform: translate(0);
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.75rem 2rem;
+  display: inline-block;
+  border-radius: 10rem;
+  transition: all 0.2s;
+  position: inherit;
+  margin-left: 2rem;
+  font-size: 1.6rem;
+  transform: translate(0);
 }
 .Btn:hover,
 .Selector select:hover,
 .Selector input:hover {
-    transform: translateY(-.3rem);
-    box-shadow: 0 1rem 2rem rgba(255, 255, 255, .3);
+  transform: translateY(-0.3rem);
+  box-shadow: 0 1rem 2rem rgba(255, 255, 255, 0.3);
 }
 .Btn:active {
-    transform: translateY(-.1rem);
-    box-shadow: 0 .5rem 1rem rgba(255, 255, 255, .3);
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.3);
 }
 .Btn::after {
-    content: "";
-    display: inline-block;
-    height: 100%;
-    width: 100%;
-    border-radius: 10rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: all .4s;
-    background-color: #ffffff;
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+  background-color: #ffffff;
 }
 .Btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
 }
 
 @keyframes moveInBottom {
-    0% {
-        opacity: 0;
-        transform: translateY(3rem);
-    }
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
 @keyframes moveInTop {
-    0% {
-        opacity: 0;
-        transform: translateY(-3rem);
-    }
-    100% {
-        opacity: 1;
-        transform: translate(0);
-    }
+  0% {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }

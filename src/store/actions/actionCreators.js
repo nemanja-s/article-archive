@@ -8,14 +8,6 @@ export const changeMessage = (message) => {
   }
 };
 
-export const setChoosenDate = (year, month) => {
-  return {
-    type: actionTypes.SET_CHOOSEN_DATE,
-    year: year,
-    month: month
-  }
-};
-
 export const fetchArticlesStart = () => {
   return {
     type: actionTypes.FETCH_ARTICLES_START
@@ -33,7 +25,7 @@ export const fetchArticlesSuccess = (articles) => {
 export const fetchArticlesFail = (error) => {
   return {
     type: actionTypes.FETCH_ARTICLES_FAIL,
-    message: "NYT server doesn't respond. Reload page and try again"
+    message: "NYT server doesn't respond. Try again..."
   }
 };
 
@@ -51,5 +43,12 @@ export const fetchArticles = (year, month) => {
       .catch(error => {
         dispatch(fetchArticlesFail(error))
       })
+  }
+};
+
+export const showInfo = (message) => {
+  return {
+    type: actionTypes.SHOW_INFO_TO_USER,
+    message: message
   }
 };

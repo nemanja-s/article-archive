@@ -6,41 +6,53 @@ import * as actions from '../../store/actions/actionCreators';
 
 
 class DateSelector extends Component {
-  // Checking validity of input values
+  state = {
+    year: '',
+    month: ''
+  };
+
   findArticles = () => {
+    const { onMessageChanged, onFetchArticles } = this.props;
+    const { year, month } = this.state;
+    // Checking validity of input values
     const currentYear = (new Date()).getFullYear();
     const currentMonth = (new Date()).getMonth() + 1;
-    const choosenYear = parseInt(this.year.value, 10);
-    const choosenMonth = parseInt(this.month.value, 10);
-    if(this.year.value === "" || choosenYear < 1851 || choosenYear > currentYear){
-      this.props.onMessageChanged("You must insert valid year...");
+    const chosenYear = parseInt(year, 10);
+    const choosenMonth = parseInt(month, 10);
+    if(year === "" || chosenYear < 1851 || chosenYear > currentYear){
+      onMessageChanged("You must insert valid year.");
       return;
     }
-    if(choosenYear === currentYear && choosenMonth > currentMonth){
-      this.props.onMessageChanged("You must insert valid month...");
+    if(chosenYear === currentYear && choosenMonth > currentMonth){
+      onMessageChanged("You must insert valid month.");
       return;
     }
-    this.props.onMessageChanged("Loading...");
-    this.props.onDatePicked(this.year.value, this.month.value);
+    // Calling NYT API to get list of articles
+    onMessageChanged("Loading... Please wait");
+    onFetchArticles(year, month);
   };
 
   render() {
+    const { message, loading } = this.props;
+    const { year, month } = this.state;
+    // disable anchor tag while fetching articles
+    const btnClasses = loading ?
+      [classes.Btn, classes.Disabled] : [classes.Btn];
+    // render input fields with dynamically changed message
     return(
       <div className={classes.Selector}>
-        <p>{this.props.message}</p>
+        <p>{message}</p>
         <input
-          type="number"
-          id="year"
           name="year"
-          min="1851"
-          max="2018"
-          maxLength="4"
-          placeholder="e.g.1983"
-          ref={(input) => this.year = input} />
+          type="number"
+          placeholder="Year"
+          value={year}
+          onChange={(e) => this.setState({ year: e.currentTarget.value })} />
         <select
           name="month"
-          id="month"
-          ref={(select) => this.month = select}>
+          value={month}
+          onChange={(e) => this.setState({ month: e.currentTarget.value })} >
+          <option value="" disabled hidden>Month</option>
           <option value="1">January</option>
           <option value="2">February</option>
           <option value="3">March</option>
@@ -55,8 +67,9 @@ class DateSelector extends Component {
           <option value="12">December</option>
         </select>
         <a href="javascript:void(0)"
-           className={classes.Btn}
-           onClick={this.findArticles}>Find articles
+           className={btnClasses.join(' ')}
+           onClick={this.findArticles}
+        >{loading ? 'Loading' : 'Search'}
         </a>
       </div>
     )
@@ -65,14 +78,15 @@ class DateSelector extends Component {
 
 const mapStateToProps = state => {
   return {
-    message: state.message
+    message: state.message,
+    loading: state.loading
   }
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onMessageChanged: (message) => dispatch(actions.changeMessage(message)),
-    onDatePicked: (year, month) => dispatch(actions.setChoosenDate(year, month))
+    onFetchArticles: (year, month) => dispatch(actions.fetchArticles(year, month))
   }
 };
 
