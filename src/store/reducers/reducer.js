@@ -4,6 +4,9 @@ const initialState = {
   message: 'Please select year and month',
   loading: false,
   articles: null,
+  from: 0,
+  to: 20,
+  pageCounter: 1,
   showArrow: false
 };
 
@@ -17,6 +20,10 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_ARTICLES_START:
       return {
         ...state,
+        articles: null,
+        from: 0,
+        to: 20,
+        pageCounter: 1,
         loading: true,
         showArrow: false
       };
@@ -30,6 +37,20 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         message: action.message
+      };
+    case actionTypes.NEXT_PAGE:
+      return {
+        ...state,
+        from: state.from + 20,
+        to: state.to + 20,
+        pageCounter: state.pageCounter + 1,
+      };
+    case actionTypes.PREVIOUS_PAGE:
+      return {
+        ...state,
+        from: state.from - 20,
+        to: state.to - 20,
+        pageCounter: state.pageCounter - 1,
       };
     case actionTypes.SHOW_INFO_TO_USER:
       return {

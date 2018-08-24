@@ -2,42 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import LoadPage from '../../components/LoadPage/LoadPage';
+import * as actions from '../../store/actions/actionCreators';
 import classes from './Articles.css';
 
 class Articles extends Component {
-  state = {
-    from: 0,
-    to: 20,
-    pageCounter: 1
-  };
-
-  // Change state data for previewing 20 new(or old) articles
-  // State send as a props to <LoadPage /> component
-  nextPage = () => {
-    this.setState(prevState => ({
-      from: prevState.from + 20,
-      to: prevState.to + 20,
-      pageCounter: prevState.pageCounter + 1
-    }));
-  };
-
-  prevPage = () => {
-    this.setState(prevState => ({
-      from: prevState.from - 20,
-      to: prevState.to - 20,
-      pageCounter: prevState.pageCounter - 1
-    }));
-  };
-
   render(){
-    const { from, to, pageCounter } = this.state;
-    const { articles } = this.props;
+    const { articles, from, to, pageCounter, onPageNext, onPreviousPage } = this.props;
     let prevButton = null;
     if(pageCounter > 1) {
       prevButton = <p>
         <a href="#all-articles"
            className={classes.BtnText}
-           onClick={this.prevPage}>&larr; Prev page
+           onClick={() => onPreviousPage()}>&larr; Prev page
         </a></p>;
     }
 
@@ -59,7 +35,7 @@ class Articles extends Component {
             {prevButton}
             <p><a href="#all-articles"
                   className={classes.BtnText}
-                  onClick={this.nextPage}>
+                  onClick={() => onPageNext()}>
               Next page &rarr;
             </a></p>
           </div>
@@ -76,8 +52,18 @@ class Articles extends Component {
 
 const mapStateToProps = state => {
   return {
-    articles: state.articles
+    articles: state.articles,
+    from: state.from,
+    to: state.to,
+    pageCounter: state.pageCounter
   }
 };
 
-export default connect(mapStateToProps)(Articles);
+const mapDispatchToProps = dispatch => {
+  return {
+    onPageNext: () => dispatch(actions.nextPage()),
+    onPreviousPage: () => dispatch(actions.previousPage())
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Articles);
