@@ -6,16 +6,17 @@ import * as actions from '../../store/actions/actionCreators';
 import classes from './Articles.css';
 
 class Articles extends Component {
-  render(){
-    const { articles, from, to, pageCounter, onPageNext, onPreviousPage } = this.props;
-    let prevButton = null;
-    if(pageCounter > 1) {
-      prevButton = <p>
-        <a href="#all-articles"
+  renderPrevButton() {
+    const { pageCounter, onPreviousPage } = this.props;
+    return (pageCounter > 1) ?
+      <p><a href="#all-articles"
            className={classes.BtnText}
            onClick={() => onPreviousPage()}>&larr; Prev page
-        </a></p>;
-    }
+      </a></p> : null;
+  }
+
+  render(){
+    const { articles, from, to, pageCounter, onPageNext } = this.props;
 
     return articles ? (
       <div>
@@ -32,7 +33,7 @@ class Articles extends Component {
             <LoadPage from={from} to={to}/>
           </div>
           <div className={classes.ArticlesButton}>
-            {prevButton}
+            {this.renderPrevButton()}
             <p><a href="#all-articles"
                   className={classes.BtnText}
                   onClick={() => onPageNext()}>

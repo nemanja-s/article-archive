@@ -23,7 +23,7 @@ class DateSelector extends Component {
       onMessageChanged("You must insert valid year.");
       return;
     }
-    if(chosenYear === currentYear && choosenMonth > currentMonth){
+    if(month === "" || (chosenYear === currentYear && choosenMonth > currentMonth)){
       onMessageChanged("You must insert valid month.");
       return;
     }
@@ -32,13 +32,15 @@ class DateSelector extends Component {
     onFetchArticles(year, month);
   };
 
+  getBtnClasses() {
+    // disable anchor tag while fetching articles
+    return this.props.loading ? [classes.Btn, classes.Disabled] : [classes.Btn];
+  }
+
   render() {
     const { message, loading } = this.props;
     const { year, month } = this.state;
-    // disable anchor tag while fetching articles
-    const btnClasses = loading ?
-      [classes.Btn, classes.Disabled] : [classes.Btn];
-    // render input fields with dynamically changed message
+
     return(
       <div className={classes.Selector}>
         <p>{message}</p>
@@ -67,7 +69,7 @@ class DateSelector extends Component {
           <option value="12">December</option>
         </select>
         <a href="javascript:void(0)"
-           className={btnClasses.join(' ')}
+           className={this.getBtnClasses().join(' ')}
            onClick={this.findArticles}
         >{loading ? 'Loading' : 'Search'}
         </a>

@@ -36,7 +36,8 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_ARTICLES_FAIL:
       return {
         ...state,
-        message: action.message
+        message: action.message,
+        loading: false
       };
     case actionTypes.NEXT_PAGE:
       return {

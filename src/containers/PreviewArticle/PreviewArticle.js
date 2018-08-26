@@ -20,13 +20,8 @@ class PreviewArticle extends Component {
     }
     // Fetch title, description and image for each article
     axios.get(`https://link-preview-api.herokuapp.com/${url}`)
-      .then(response => {
-        this.setState({ previewArticle: response.data });
-      })
-      .catch(error => {
-        console.log(error);
-        this.setState({ error: true })
-      });
+      .then(res => { this.setState({ previewArticle: res.data }) })
+      .catch(error => { this.setState({ error: true }) });
   }
 
   // Return article box with title, description and image
