@@ -23,10 +23,10 @@ class Articles extends Component {
         <div className={classes.Results}>
           <div className={classes.Heading}>
             <h2 id="all-articles" className={classes.HeadingText}>
-              Your searched articles:
+              We found {articles.response.docs.length} articles:
             </h2>
             <h2 className={classes.HeadingPage}>
-              Page {pageCounter}
+              Page {pageCounter} of {Math.ceil(articles.response.docs.length / 20)}
             </h2>
           </div>
           <div className={classes.Articles}>

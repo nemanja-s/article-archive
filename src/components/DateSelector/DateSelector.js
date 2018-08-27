@@ -48,6 +48,7 @@ class DateSelector extends Component {
           name="year"
           type="number"
           placeholder="Year"
+          autoFocus
           value={year}
           onChange={(e) => this.setState({ year: e.currentTarget.value })} />
         <select
